@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">baker-order</string>
+
+    <string name="app_name">Baker Order</string>
+
+    <string name="title_selected_good">Selected Good</string>
+
+    <!-- good names -->
+
+    <string name="cookies">Cookies</string>
+
+    <string name="raisin_cake">Raisin Cake</string>
+
+    <string name="shortcake">Shortcake</string>
+
+    <string name="muffins">Muffins</string>
+
+
 </resources>
