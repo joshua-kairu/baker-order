@@ -6,7 +6,7 @@ A very simple Android app to demonstrate how Android can assist baker stores in 
 
 Here is a video of how the app looks like:
 
-![Default app behavior between baked goods list and selected goods details](/run/media/joshua/DATA/Documents/Coding/Android/AndroidStudioProjects/upwork/9-1-17-burkina-baking/screen-records/basic-functionality.gif) 
+![Default app behavior between baked goods list and selected goods details](screen-records/basic-functionality.gif) 
 
 ## License :lock_with_ink_pen:
 
