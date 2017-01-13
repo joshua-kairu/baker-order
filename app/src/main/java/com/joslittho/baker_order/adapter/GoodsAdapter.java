@@ -2,6 +2,7 @@ package com.joslittho.baker_order.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,15 @@ import android.widget.TextView;
 
 import com.joslittho.baker_order.R;
 import com.joslittho.baker_order.model.BakedGood;
+import com.joslittho.baker_order.viewholder.GoodViewHolder;
 
 import java.util.List;
 
 /**
- * {@link android.widget.Adapter} for the baked mGoods list
+ * {@link GoodsAdapter} exposes {@link BakedGood}s to a {@link android.support.v7.widget.RecyclerView}.
  */
 // begin class GoodsAdapter
-public class GoodsAdapter extends ArrayAdapter< BakedGood > {
+public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
     /* CONSTANTS */
     
@@ -28,20 +30,41 @@ public class GoodsAdapter extends ArrayAdapter< BakedGood > {
 
     /* VARIABLES */
 
-    Context mContext;
+    /* Contexts */
 
-    List< BakedGood > mGoods;
+    private Context mContext; // ditto
+
+    /* GoodsAdapterOnClickHandlers */
+
+    public GoodsAdapterOnClickHandler mGoodsAdapterOnClickHandler; // ditto
+
+    /* Lists */
+
+    private List< BakedGood > mGoods; // ditto
 
     /* CONSTRUCTOR */
 
-    public GoodsAdapter( Context context, List< BakedGood > goods ) {
+    // begin constructor
+    public GoodsAdapter( Context context, List< BakedGood > goods,
+                         GoodsAdapterOnClickHandler clickHandler ) {
 
-        super( context, 0, goods );
+        // 0. initialize context
+        // 1. initialize the list
+        // 2. initialize the click handler
+
+        // 0. initialize context
 
         mContext = context;
 
+        // 1. initialize the list
+
         mGoods = goods;
-    }
+
+        // 2. initialize the click handler
+
+        mGoodsAdapterOnClickHandler = clickHandler;
+
+    } // end constructor
 
     /* METHODS */
     
@@ -49,25 +72,55 @@ public class GoodsAdapter extends ArrayAdapter< BakedGood > {
     
     /* Overrides */
 
-    @NonNull
     @Override
-    public View getView( int position, View convertView, ViewGroup parent ) {
+    // begin onCreateViewHolder
+    public GoodViewHolder onCreateViewHolder( ViewGroup parent, int viewType ) {
+
+        // 0. inflate the correct layout using the parent view group's context
+        // 1. return a view holder using the inflated view and this adapter
+
+        // 0. inflate the correct layout using the parent view group's context
+
+        View view = LayoutInflater.from( parent.getContext() )
+                .inflate( R.layout.goods_item, parent, false );
+
+        // 1. return a view holder using the inflated view and this adapter
+
+        return new GoodViewHolder( view, this );
+
+    } // end onCreateViewHolder
+
+    @Override
+    // begin onBindViewHolder
+    public void onBindViewHolder( GoodViewHolder goodViewHolder, int position ) {
+
+        // 0. for the list item at this position, show the correct
+        // 0a. picture
+        // 0b. name
+        // 0c. value
+
+        // 0. for the list item at this position, show the correct
 
         BakedGood currentGood = mGoods.get( position );
 
-        if ( convertView == null ) {
-            convertView = LayoutInflater.from( mContext ).inflate( R.layout.goods_item, parent, false );
-        }
+        // 0a. picture
 
-        ImageView pictureImageView = ( ImageView ) convertView.findViewById( R.id.good_item_iv_picture );
-        TextView nameTextView = ( TextView ) convertView.findViewById( R.id.good_item_tv_name );
-        TextView valueTextView = ( TextView ) convertView.findViewById( R.id.good_item_tv_value );
+        goodViewHolder.mPictureImageView.setImageResource( currentGood.getPicture() );
 
-        pictureImageView.setImageResource( currentGood.getPicture() );
-        nameTextView.setText( currentGood.getName() );
-        valueTextView.setText( String.valueOf( currentGood.getPrice() ) + " XOF" );
+        // 0b. name
 
-        return convertView;
+        goodViewHolder.mNameTextView.setText( currentGood.getName() );
+
+        // 0c. value
+
+        goodViewHolder.mValueTextView.setText( String.valueOf( currentGood.getPrice() ) + " XOF" );
+
+    } // end onBindViewHolder
+
+    @Override
+    // getItemCount
+    public int getItemCount() {
+        return mGoods.size();
     }
 
     /* Other Methods */

@@ -3,13 +3,17 @@ package com.joslittho.baker_order.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListView;
 
 import com.joslittho.baker_order.R;
 import com.joslittho.baker_order.R2;
 import com.joslittho.baker_order.adapter.GoodsAdapter;
+import com.joslittho.baker_order.adapter.GoodsAdapterOnClickHandler;
 import com.joslittho.baker_order.model.BakedGood;
+import com.joslittho.baker_order.viewholder.GoodViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoodsAdapterOnClickHandler {
 
     /* CONSTANTS */
 
@@ -26,12 +30,18 @@ public class MainActivity extends AppCompatActivity {
 
     /* VARIABLES */
 
-    GoodsAdapter mGoodsAdapter;
+    /* GoodsAdapters */
 
-    List< BakedGood > mBakedGoods;
+    private GoodsAdapter mGoodsAdapter; // ditto
+
+    /* Lists */
+
+    private List< BakedGood > mBakedGoods; // ditto
+
+    /* RecyclerViews */
 
     @BindView( R2.id.goods_rv_list )
-    ListView mGoodsListView;
+    public RecyclerView mGoodsRecyclerView; // ditto
 
     /* METHODS */
 
@@ -40,23 +50,79 @@ public class MainActivity extends AppCompatActivity {
     /* Overrides */
 
     @Override
+    // begin onCreate
     protected void onCreate( Bundle savedInstanceState ) {
+
+        // 0. super stuff
+        // 1. use the goods fragment layout
+        // 2. bind
+        // 3. get a list of goods
+        // 4. the recycler
+        // 4a. use a linear layout manager
+        // 4b. has fixed size
+        // 4c. set adapter
+
+        // 0. super stuff
 
         super.onCreate( savedInstanceState );
 
+        // 1. use the goods fragment layout
+
         setContentView( R.layout.fragment_goods );
 
+        // 2. bind
+
         ButterKnife.bind( this );
-        ButterKnife.setDebug( true );
+
+        // 3. get a list of goods
 
         mBakedGoods = generateBakedGoods();
 
-        mGoodsAdapter = new GoodsAdapter( this, mBakedGoods );
+        // 4. the recycler
 
-        mGoodsListView.setAdapter( mGoodsAdapter );
+        // 4a. use a linear layout manager
 
-        int s = 0;
-    }
+        mGoodsRecyclerView.setLayoutManager( new LinearLayoutManager( this ) );
+
+        // 4b. has fixed size
+
+        mGoodsRecyclerView.setHasFixedSize( true );
+
+        // 4c. set adapter
+
+        mGoodsAdapter = new GoodsAdapter( this, mBakedGoods, this );
+
+        mGoodsRecyclerView.setAdapter( mGoodsAdapter );
+
+    } // end onCreate
+
+    /**
+     * Listener for when a good item in the recycler is clicked.
+     *
+     * @param clickedHolder The {@link GoodViewHolder} that has been clicked.
+     * */
+    @Override
+    // begin onClick
+    public void onClick( GoodViewHolder clickedHolder ) {
+
+        // 0. get the picture of the clicked item
+        // 1. put the picture in an intent
+        // 2. start the selected good activity using the intent
+
+        // 0. get the picture of the clicked item
+
+        int imageRes = mBakedGoods.get( clickedHolder.getAdapterPosition() ).getPicture();
+
+        // 1. put the picture in an intent
+
+        Intent selectedGoodIntent = new Intent( this, SelectedGoodActivity.class )
+                .putExtra( SelectedGoodActivity.ARG_PICTURE, imageRes );
+
+        // 2. start the selected good activity using the intent
+
+        startActivity( selectedGoodIntent );
+
+    } // end onClick
 
     /* Other Methods */
 
@@ -107,14 +173,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnItemClick( R2.id.goods_rv_list )
-    public void onGoodsListClick( int position ) {
-
-        int imageRes = mBakedGoods.get( position ).getPicture();
-
-        Intent selectedGoodIntent = new Intent( this, SelectedGoodActivity.class )
-                .putExtra( SelectedGoodActivity.ARG_PICTURE, imageRes );
-
-        startActivity( selectedGoodIntent );
-    }
 }

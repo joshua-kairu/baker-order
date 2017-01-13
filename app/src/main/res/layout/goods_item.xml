@@ -12,6 +12,10 @@
 
     android:layout_height="@dimen/good_list_item_height"
 
+    android:paddingTop="@dimen/space_between_content_areas"
+
+    android:paddingBottom="@dimen/space_between_content_areas"
+
     >
 
     <!-- image for the good -->
