@@ -2,10 +2,12 @@ package com.joslittho.baker_order.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.joslittho.baker_order.R;
 import com.joslittho.baker_order.R2;
+import com.joslittho.baker_order.fragment.SelectedGoodFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,19 +21,15 @@ public class SelectedGoodActivity extends AppCompatActivity {
     /* CONSTANTS */
     
     /* Integers */
-    
+
     /* Strings */
 
-    public static final String ARG_PICTURE = "ARG_PICTURE";
     /**
      * The logger.
      */
     private static final String LOG_TAG = SelectedGoodActivity.class.getSimpleName();
     
     /* VARIABLES */
-
-    @BindView( R2.id.selected_good_iv_picture )
-    ImageView mGoodImageView;
 
     /* CONSTRUCTOR */
     
@@ -46,21 +44,33 @@ public class SelectedGoodActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
 
         // 0. super stuff
+        // 1. use the selected good activity layout
+        // 2. get the picture from the extras
+        // 3. start the selected good fragment with the picture
 
         // 0. super stuff
 
         super.onCreate( savedInstanceState );
 
-        setContentView( R.layout.fragment_selected_good );
+        // 1. use the selected good activity layout
 
-        ButterKnife.bind( this );
+        setContentView( R.layout.activity_selected_good );
+
+        // 2. get the picture from the extras
 
         Bundle bundle = getIntent().getExtras();
+        int imageRes = bundle.getInt( SelectedGoodFragment.ARGUMENT_PICTURE );
 
-        if ( bundle != null ) {
-            int imageRes = bundle.getInt( ARG_PICTURE );
-            mGoodImageView.setImageResource( imageRes );
-        }
+        // 3. start the selected good fragment with the picture
+
+        // begin if this is first run
+        if ( savedInstanceState == null ) {
+
+            getSupportFragmentManager().beginTransaction()
+                    .add( R.id.detail_fl_container, SelectedGoodFragment.newInstance( imageRes ) )
+                    .commit();
+
+        } // end if this is first run
 
     } // end onCreate
     

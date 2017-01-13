@@ -30,10 +30,6 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
     /* VARIABLES */
 
-    /* Contexts */
-
-    private Context mContext; // ditto
-
     /* GoodsAdapterOnClickHandlers */
 
     public GoodsAdapterOnClickHandler mGoodsAdapterOnClickHandler; // ditto
@@ -48,19 +44,14 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
     public GoodsAdapter( Context context, List< BakedGood > goods,
                          GoodsAdapterOnClickHandler clickHandler ) {
 
-        // 0. initialize context
-        // 1. initialize the list
-        // 2. initialize the click handler
+        // 0. initialize the list
+        // 1. initialize the click handler
 
-        // 0. initialize context
-
-        mContext = context;
-
-        // 1. initialize the list
+        // 0. initialize the list
 
         mGoods = goods;
 
-        // 2. initialize the click handler
+        // 1. initialize the click handler
 
         mGoodsAdapterOnClickHandler = clickHandler;
 
