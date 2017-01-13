@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- layout for the main activity -->
+
+<!-- in big tabs, statically holds the goods fragment
+and dynamically holds the selected good fragment -->
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:baselineAligned="false"
+
+    >
+
+    <!-- static goods fragment -->
+
+    <fragment
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:id="@+id/main_f_goods"
+
+        android:layout_width="0dp"
+
+        android:layout_height="match_parent"
+
+        android:name="com.joslittho.baker_order.fragment.GoodsFragment"
+
+        android:layout_weight="5"
+
+        tools:layout="@android:layout/list_content"
+
+        />
+
+    <!-- dynamic selected goods container -->
+
+    <FrameLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="0dp"
+
+        android:layout_height="match_parent"
+
+        android:id="@+id/detail_fl_container"
+
+        android:layout_weight="7"
+
+        tools:ignore="MergeRootFrame"
+
+        />
+
+
+
+</LinearLayout>
