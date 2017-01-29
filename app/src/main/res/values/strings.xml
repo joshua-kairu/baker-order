@@ -1,17 +1,27 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Baker Order</string>
+    <string name="app_name">Wine Here</string>
 
-    <string name="title_selected_item">Selected Item</string>
+    <string name="title_selected_item">Selected Wine</string>
 
     <!-- item names -->
 
-    <string name="item_1">Cookies</string>
+    <string name="item_0">Barbera</string>
 
-    <string name="item_0">Raisin Cake</string>
+    <string name="item_1">Burgundy</string>
 
-    <string name="item_2">Muffins</string>
+    <string name="item_2">Carménère</string>
 
-    <string name="item_3">Shortcake</string>
+    <string name="item_3">Chianti</string>
+
+    <!-- currency -->
+
+    <string name="format_currency"><xliff:g id="integer_price">%1$d</xliff:g> AUD</string>
+
+    <!-- details flavor texts -->
+
+    <string name="details_flavor_text_1">Delivery Time : 12–16 weeks</string>
+
+    <string name="details_flavor_text_2">Wine Jester Rating: 18, Dec 2016</string>
 
 </resources>

@@ -26,26 +26,35 @@ public class ItemsAdapter extends RecyclerView.Adapter< ItemViewHolder > {
 
     /* VARIABLES */
 
+    /* Contexts */
+
+    private Context mContext; // ditto
+
     /* GoodsAdapterOnClickHandlers */
 
     public ItemsAdapterOnClickHandler mItemsAdapterOnClickHandler; // ditto
 
     /* Lists */
 
-    private List< Item > mGoods; // ditto
+    private List< Item > mItems; // ditto
 
     /* CONSTRUCTOR */
 
     // begin constructor
-    public ItemsAdapter( Context context, List< Item > goods,
+    public ItemsAdapter( Context context, List< Item > items,
                          ItemsAdapterOnClickHandler clickHandler ) {
 
-        // 0. initialize the list
-        // 1. initialize the click handler
+        // 0. initialize the context
+        // 1. initialize the list
+        // 2. initialize the click handler
 
-        // 0. initialize the list
+        // 0. initialize the context
 
-        mGoods = goods;
+        mContext = context;
+
+        // 1. initialize the list
+
+        mItems = items;
 
         // 1. initialize the click handler
 
@@ -88,26 +97,27 @@ public class ItemsAdapter extends RecyclerView.Adapter< ItemViewHolder > {
 
         // 0. for the list item at this position, show the correct
 
-        Item currentGood = mGoods.get( position );
+        Item currentItem = mItems.get( position );
 
         // 0a. picture
 
-        itemViewHolder.mPictureImageView.setImageResource( currentGood.getPicture() );
+        itemViewHolder.mPictureImageView.setImageResource( currentItem.getPicture() );
 
         // 0b. name
 
-        itemViewHolder.mNameTextView.setText( currentGood.getName() );
+        itemViewHolder.mNameTextView.setText( currentItem.getName() );
 
         // 0c. value
 
-        itemViewHolder.mValueTextView.setText( String.valueOf( currentGood.getPrice() ) + " XOF" );
+        itemViewHolder.mValueTextView.setText(
+                mContext.getString( R.string.format_currency, currentItem.getPrice() ) );
 
     } // end onBindViewHolder
 
     @Override
     // getItemCount
     public int getItemCount() {
-        return mGoods.size();
+        return mItems.size();
     }
 
     /* Other Methods */

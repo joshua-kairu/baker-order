@@ -1,6 +1,6 @@
-# Baker Order
+# Wine Here
 
-A very simple Android app to demonstrate how Android can assist baker stores in deliveries.
+A very simple Android app to demonstrate how Android can assist wine stores in deliveries.
 
 ## How To Use :wrench:
 

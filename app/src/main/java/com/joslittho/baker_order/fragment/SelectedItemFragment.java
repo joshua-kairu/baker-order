@@ -36,7 +36,7 @@ public class SelectedItemFragment extends Fragment {
 
     /* ImageViews */
 
-    @BindView( R2.id.selected_good_iv_picture )
+    @BindView( R2.id.selected_item_iv_picture )
     public ImageView mPictureImageView; // ditto
 
     /* CONSTRUCTOR */

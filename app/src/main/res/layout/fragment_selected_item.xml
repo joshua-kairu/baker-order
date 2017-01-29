@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- layout for the selected baked good -->
+<!-- layout for the selected item -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
 
-                xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
 
-                android:padding="@dimen/layout_padding"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:padding="@dimen/layout_padding"
 
     >
 
@@ -23,7 +26,7 @@
 
         android:contentDescription="@null"
 
-        android:id="@+id/selected_good_iv_picture"
+        android:id="@+id/selected_item_iv_picture"
 
         android:scaleType="fitCenter"
 
@@ -31,7 +34,7 @@
 
         />
 
-    <!-- text for the size of the good -->
+    <!-- text for the first flavor text -->
 
     <TextView
 
@@ -39,11 +42,11 @@
 
         android:layout_height="wrap_content"
 
-        android:id="@+id/selected_good_tv_size"
+        android:id="@+id/selected_item_tv_flavor_1"
 
-        android:text="Size: 12"
+        android:text="@string/details_flavor_text_1"
 
-        android:layout_below="@id/selected_good_iv_picture"
+        android:layout_below="@id/selected_item_iv_picture"
 
         android:layout_marginTop="@dimen/layout_padding"
 
@@ -51,7 +54,7 @@
 
         />
 
-    <!-- text for the flavor of the good -->
+    <!-- text for the second flavor text -->
 
     <TextView
 
@@ -59,11 +62,11 @@
 
         android:layout_height="wrap_content"
 
-        android:id="@+id/selected_good_tv_flavor"
+        android:id="@+id/selected_item_tv_flavor_2"
 
-        android:text="Flavor: Vanilla"
+        android:text="@string/details_flavor_text_2"
 
-        android:layout_below="@id/selected_good_tv_size"
+        android:layout_below="@id/selected_item_tv_flavor_1"
 
         android:layout_marginTop="@dimen/layout_padding"
 
