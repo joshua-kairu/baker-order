@@ -6,7 +6,7 @@ A very simple Android app to demonstrate how Android can assist wine stores in d
 
 Here is a video of how the app looks like:
 
-![Default app behavior between baked goods list and selected goods details](screen-records/basic-functionality.gif) 
+![Default app behavior between wines list and selected wine details](screen-records/basic-functionality.gif)
 
 ## License :lock_with_ink_pen:
 
