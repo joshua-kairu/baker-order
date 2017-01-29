@@ -2,21 +2,15 @@ package com.joslittho.baker_order.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import com.joslittho.baker_order.R;
-import com.joslittho.baker_order.R2;
-import com.joslittho.baker_order.fragment.SelectedGoodFragment;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.joslittho.baker_order.fragment.SelectedItemFragment;
 
 /**
- * {@link android.app.Activity} to display the selected good
+ * {@link android.app.Activity} to display the selected item
  */
-// begin activity SelectedGoodActivity
-public class SelectedGoodActivity extends AppCompatActivity {
+// begin activity SelectedItemActivity
+public class SelectedItemActivity extends AppCompatActivity {
 
     /* CONSTANTS */
     
@@ -27,7 +21,7 @@ public class SelectedGoodActivity extends AppCompatActivity {
     /**
      * The logger.
      */
-    private static final String LOG_TAG = SelectedGoodActivity.class.getSimpleName();
+    private static final String LOG_TAG = SelectedItemActivity.class.getSimpleName();
     
     /* VARIABLES */
 
@@ -54,12 +48,12 @@ public class SelectedGoodActivity extends AppCompatActivity {
 
         // 1. use the selected good activity layout
 
-        setContentView( R.layout.activity_selected_good );
+        setContentView( R.layout.activity_selected_item );
 
         // 2. get the picture from the extras
 
         Bundle bundle = getIntent().getExtras();
-        int imageRes = bundle.getInt( SelectedGoodFragment.ARGUMENT_PICTURE );
+        int imageRes = bundle.getInt( SelectedItemFragment.ARGUMENT_PICTURE );
 
         // 3. start the selected good fragment with the picture
 
@@ -67,7 +61,7 @@ public class SelectedGoodActivity extends AppCompatActivity {
         if ( savedInstanceState == null ) {
 
             getSupportFragmentManager().beginTransaction()
-                    .add( R.id.detail_fl_container, SelectedGoodFragment.newInstance( imageRes ) )
+                    .add( R.id.detail_fl_container, SelectedItemFragment.newInstance( imageRes ) )
                     .commit();
 
         } // end if this is first run
@@ -76,4 +70,4 @@ public class SelectedGoodActivity extends AppCompatActivity {
     
     /* Other Methods */
 
-} // end activity SelectedGoodActivity
+} // end activity SelectedItemActivity

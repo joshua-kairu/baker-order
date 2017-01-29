@@ -3,8 +3,8 @@ package com.joslittho.baker_order.model;
 /**
  * A baked good
  */
-// begin class BakedGood
-public class BakedGood {
+// begin class Item
+public class Item {
 
     /* CONSTANTS */
     
@@ -22,7 +22,7 @@ public class BakedGood {
     
     /* CONSTRUCTOR */
 
-    public BakedGood( String name, int picture, int price ) {
+    public Item( String name, int picture, int price ) {
         this.picture = picture;
         this.name = name;
         this.price = price;
@@ -60,4 +60,4 @@ public class BakedGood {
     
     /* Other Methods */
 
-} // end class BakedGood
+} // end class Item

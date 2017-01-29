@@ -16,7 +16,7 @@
 
     android:layout_height="match_parent"
 
-    android:name="com.joslittho.baker_order.fragment.GoodsFragment"
+    android:name="com.joslittho.baker_order.fragment.ItemsFragment"
 
     tools:layout="@android:layout/list_content"
 

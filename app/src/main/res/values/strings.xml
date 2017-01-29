@@ -2,17 +2,16 @@
 
     <string name="app_name">Baker Order</string>
 
-    <string name="title_selected_good">Selected Good</string>
+    <string name="title_selected_item">Selected Item</string>
 
-    <!-- good names -->
+    <!-- item names -->
 
-    <string name="cookies">Cookies</string>
+    <string name="item_1">Cookies</string>
 
-    <string name="raisin_cake">Raisin Cake</string>
+    <string name="item_0">Raisin Cake</string>
 
-    <string name="shortcake">Shortcake</string>
+    <string name="item_2">Muffins</string>
 
-    <string name="muffins">Muffins</string>
-
+    <string name="item_3">Shortcake</string>
 
 </resources>

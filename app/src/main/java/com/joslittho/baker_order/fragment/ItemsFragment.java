@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 
 import com.joslittho.baker_order.R;
 import com.joslittho.baker_order.R2;
-import com.joslittho.baker_order.activity.SelectedGoodActivity;
-import com.joslittho.baker_order.adapter.GoodsAdapter;
-import com.joslittho.baker_order.adapter.GoodsAdapterOnClickHandler;
-import com.joslittho.baker_order.model.BakedGood;
-import com.joslittho.baker_order.viewholder.GoodViewHolder;
+import com.joslittho.baker_order.activity.SelectedItemActivity;
+import com.joslittho.baker_order.adapter.ItemsAdapter;
+import com.joslittho.baker_order.adapter.ItemsAdapterOnClickHandler;
+import com.joslittho.baker_order.model.Item;
+import com.joslittho.baker_order.viewholder.ItemViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +26,8 @@ import butterknife.ButterKnife;
 /**
  * {@link Fragment} to hold the list of goods
  */
-// begin fragment GoodsFragment
-public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandler {
+// begin fragment ItemsFragment
+public class ItemsFragment extends Fragment implements ItemsAdapterOnClickHandler {
 
     /* CONSTANTS */
 
@@ -40,17 +40,17 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
     /**
      * The logger.
      */
-    private static final String LOG_TAG = GoodsFragment.class.getSimpleName();
+    private static final String LOG_TAG = ItemsFragment.class.getSimpleName();
     
     /* VARIABLES */
 
     /* GoodsAdapters */
 
-    private GoodsAdapter mGoodsAdapter; // ditto
+    private ItemsAdapter mItemsAdapter; // ditto
 
     /* Lists */
 
-    private List< BakedGood > mBakedGoods; // ditto
+    private List< Item > mItems; // ditto
 
     /* RecyclerViews */
 
@@ -59,7 +59,7 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
     /* CONSTRUCTOR */
 
-    public GoodsFragment() {
+    public ItemsFragment() {
         // Required empty public constructor
     }
 
@@ -85,7 +85,7 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
         // 0. inflate the layout for this fragment
 
-        View rootView = inflater.inflate( R.layout.fragment_goods, container, false );
+        View rootView = inflater.inflate( R.layout.fragment_items, container, false );
 
         // 1. bind
 
@@ -93,7 +93,7 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
         // 2. get a list of goods
 
-        mBakedGoods = generateBakedGoods();
+        mItems = generateBakedGoods();
 
         // 2. the recycler
 
@@ -107,9 +107,9 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
         // 2c. set adapter
 
-        mGoodsAdapter = new GoodsAdapter( getActivity(), mBakedGoods, this );
+        mItemsAdapter = new ItemsAdapter( getActivity(), mItems, this );
 
-        mGoodsRecyclerView.setAdapter( mGoodsAdapter );
+        mGoodsRecyclerView.setAdapter( mItemsAdapter );
 
         // last. return the inflated view
 
@@ -120,11 +120,11 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
     /**
      * Listener for when a good item in the recycler is clicked.
      *
-     * @param clickedHolder The {@link GoodViewHolder} that has been clicked.
+     * @param clickedHolder The {@link ItemViewHolder} that has been clicked.
      * */
     @Override
     // begin onClick
-    public void onClick( GoodViewHolder clickedHolder ) {
+    public void onClick( ItemViewHolder clickedHolder ) {
 
         // 0. get the picture of the clicked item
         // 1. put the picture in an intent
@@ -132,12 +132,12 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
         // 0. get the picture of the clicked item
 
-        int imageRes = mBakedGoods.get( clickedHolder.getAdapterPosition() ).getPicture();
+        int imageRes = mItems.get( clickedHolder.getAdapterPosition() ).getPicture();
 
         // 1. put the picture in an intent
 
-        Intent selectedGoodIntent = new Intent( getActivity(), SelectedGoodActivity.class )
-                .putExtra( SelectedGoodFragment.ARGUMENT_PICTURE, imageRes );
+        Intent selectedGoodIntent = new Intent( getActivity(), SelectedItemActivity.class )
+                .putExtra( SelectedItemFragment.ARGUMENT_PICTURE, imageRes );
 
         // 2. start the selected good activity using the intent
 
@@ -153,9 +153,9 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
      * @return An {@link ArrayList} of some generated goods.
      * */
     // begin generateBakedGoods
-    private ArrayList< BakedGood > generateBakedGoods() {
+    private ArrayList< Item > generateBakedGoods() {
 
-        ArrayList< BakedGood > goods = new ArrayList<>( GOODS_NUMBER );
+        ArrayList< Item > goods = new ArrayList<>( GOODS_NUMBER );
 
         for ( int i = 0; i < GOODS_NUMBER; i++ ) {
 
@@ -166,31 +166,31 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
             switch ( i % 4 ) {
 
                 case 0:
-                    picture = R.drawable.raisin_cake;
+                    picture = R.drawable.item_0;
                     value = 500;
-                    name = getString( R.string.raisin_cake );
+                    name = getString( R.string.item_0 );
                     break;
 
                 case 1:
-                    picture = R.drawable.cookies;
+                    picture = R.drawable.item_1;
                     value = 600;
-                    name = getString( R.string.cookies );
+                    name = getString( R.string.item_1 );
                     break;
 
                 case 2:
-                    picture = R.drawable.muffins;
+                    picture = R.drawable.item_2;
                     value = 700;
-                    name = getString( R.string.muffins );
+                    name = getString( R.string.item_2 );
                     break;
 
                 case 3: default:
-                    picture = R.drawable.shortcake;
+                    picture = R.drawable.item_3;
                     value = 800;
-                    name = getString( R.string.shortcake );
+                    name = getString( R.string.item_3 );
                     break;
             }
 
-            BakedGood good = new BakedGood( name, picture, value );
+            Item good = new Item( name, picture, value );
 
             goods.add( good );
 
@@ -200,4 +200,4 @@ public class GoodsFragment extends Fragment implements GoodsAdapterOnClickHandle
 
     } // end generateBakedGoods
 
-} // end fragment GoodsFragment
+} // end fragment ItemsFragment

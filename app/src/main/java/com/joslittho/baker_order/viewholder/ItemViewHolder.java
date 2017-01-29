@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.joslittho.baker_order.R2;
-import com.joslittho.baker_order.adapter.GoodsAdapter;
+import com.joslittho.baker_order.adapter.ItemsAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,8 +14,8 @@ import butterknife.ButterKnife;
 /**
  * {@link android.support.v7.widget.RecyclerView.ViewHolder} to hold the views for a good item
  */
-// begin class GoodViewHolder
-public class GoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+// begin class ItemViewHolder
+public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     /* CONSTANTS */
     
@@ -27,7 +27,7 @@ public class GoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     /* GoodsAdapters */
 
-    private GoodsAdapter mHostGoodsAdapter; // ditto
+    private ItemsAdapter mHostItemsAdapter; // ditto
 
     /* ImageViews */
 
@@ -45,7 +45,7 @@ public class GoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     /* CONSTRUCTOR */
 
     // begin constructor
-    public GoodViewHolder( View itemView, GoodsAdapter goodsAdapter ) {
+    public ItemViewHolder( View itemView, ItemsAdapter itemsAdapter ) {
 
         // 0. super stuff
         // 1. bind views
@@ -66,7 +66,7 @@ public class GoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
         // 3. initialize the host adapter
 
-        mHostGoodsAdapter = goodsAdapter;
+        mHostItemsAdapter = itemsAdapter;
 
     } // end constructor
 
@@ -84,10 +84,10 @@ public class GoodViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
         // 0. tell the adapter of the click
 
-        mHostGoodsAdapter.mGoodsAdapterOnClickHandler.onClick( this );
+        mHostItemsAdapter.mItemsAdapterOnClickHandler.onClick( this );
 
     } // end onClick
     
     /* Other Methods */
 
-} // end class GoodViewHolder
+} // end class ItemViewHolder

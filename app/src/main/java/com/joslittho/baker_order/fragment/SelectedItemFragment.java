@@ -16,8 +16,8 @@ import butterknife.ButterKnife;
 /**
  * {@link Fragment} to show the details of the selected good
  */
-// begin fragment SelectedGoodFragment
-public class SelectedGoodFragment extends Fragment {
+// begin fragment SelectedItemFragment
+public class SelectedItemFragment extends Fragment {
 
     /* CONSTANTS */
 
@@ -30,7 +30,7 @@ public class SelectedGoodFragment extends Fragment {
     /**
      * The logger.
      */
-    private static final String LOG_TAG = SelectedGoodFragment.class.getSimpleName();
+    private static final String LOG_TAG = SelectedItemFragment.class.getSimpleName();
     
     /* VARIABLES */
 
@@ -41,26 +41,26 @@ public class SelectedGoodFragment extends Fragment {
 
     /* CONSTRUCTOR */
 
-    public SelectedGoodFragment() {
+    public SelectedItemFragment() {
         // Required empty public constructor
     }
 
     /**
-     * Create a new {@link SelectedGoodFragment} with the given arguments.
+     * Create a new {@link SelectedItemFragment} with the given arguments.
      *
      * @param picture An integer reference to the selected good's image resource
      * */
     // begin instantiating method newInstance
-    public static SelectedGoodFragment newInstance( int picture ) {
+    public static SelectedItemFragment newInstance( int picture ) {
 
-        // 0. create a new SelectedGoodFragment
+        // 0. create a new SelectedItemFragment
         // 1. put the parameters in a bundle
-        // 2. use the bundle as the arguments for the created SelectedGoodFragment
-        // 3. return the created SelectedGoodFragment
+        // 2. use the bundle as the arguments for the created SelectedItemFragment
+        // 3. return the created SelectedItemFragment
 
-        // 0. create a new SelectedGoodFragment
+        // 0. create a new SelectedItemFragment
 
-        SelectedGoodFragment selectedGoodFragment = new SelectedGoodFragment();
+        SelectedItemFragment selectedItemFragment = new SelectedItemFragment();
 
         // 1. put the parameters in a bundle
 
@@ -68,13 +68,13 @@ public class SelectedGoodFragment extends Fragment {
 
         bundle.putInt( ARGUMENT_PICTURE, picture );
 
-        // 2. use the bundle as the arguments for the created SelectedGoodFragment
+        // 2. use the bundle as the arguments for the created SelectedItemFragment
 
-        selectedGoodFragment.setArguments( bundle );
+        selectedItemFragment.setArguments( bundle );
 
-        // 3. return the created SelectedGoodFragment
+        // 3. return the created SelectedItemFragment
 
-        return selectedGoodFragment;
+        return selectedItemFragment;
 
     } // end instantiating method newInstance
 
@@ -96,7 +96,7 @@ public class SelectedGoodFragment extends Fragment {
 
         // 0. Inflate the layout for this fragment
 
-        View rootView = inflater.inflate( R.layout.fragment_selected_good, container, false );
+        View rootView = inflater.inflate( R.layout.fragment_selected_item, container, false );
 
         // 1. bind
 
@@ -123,4 +123,4 @@ public class SelectedGoodFragment extends Fragment {
     
     /* Other Methods */
 
-} // end fragment SelectedGoodFragment
+} // end fragment SelectedItemFragment

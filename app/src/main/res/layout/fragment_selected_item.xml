@@ -27,7 +27,7 @@
 
         android:scaleType="fitCenter"
 
-        tools:src="@drawable/cookies"
+        tools:src="@drawable/item_1"
 
         />
 

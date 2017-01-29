@@ -19,9 +19,9 @@
 
         <activity
 
-            android:name=".activity.SelectedGoodActivity"
+            android:name=".activity.SelectedItemActivity"
 
-            android:label="@string/title_selected_good"
+            android:label="@string/title_selected_item"
 
             />
 

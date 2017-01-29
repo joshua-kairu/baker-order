@@ -31,7 +31,7 @@ and dynamically holds the selected good fragment -->
 
         android:layout_height="match_parent"
 
-        android:name="com.joslittho.baker_order.fragment.GoodsFragment"
+        android:name="com.joslittho.baker_order.fragment.ItemsFragment"
 
         android:layout_weight="5"
 

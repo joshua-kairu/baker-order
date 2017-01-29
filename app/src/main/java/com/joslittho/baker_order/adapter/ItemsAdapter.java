@@ -1,26 +1,22 @@
 package com.joslittho.baker_order.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.joslittho.baker_order.R;
-import com.joslittho.baker_order.model.BakedGood;
-import com.joslittho.baker_order.viewholder.GoodViewHolder;
+import com.joslittho.baker_order.model.Item;
+import com.joslittho.baker_order.viewholder.ItemViewHolder;
 
 import java.util.List;
 
 /**
- * {@link GoodsAdapter} exposes {@link BakedGood}s to a {@link android.support.v7.widget.RecyclerView}.
+ * {@link ItemsAdapter} exposes {@link Item}s to a {@link android.support.v7.widget.RecyclerView}.
  */
-// begin class GoodsAdapter
-public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
+// begin class ItemsAdapter
+public class ItemsAdapter extends RecyclerView.Adapter< ItemViewHolder > {
 
     /* CONSTANTS */
     
@@ -32,17 +28,17 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
     /* GoodsAdapterOnClickHandlers */
 
-    public GoodsAdapterOnClickHandler mGoodsAdapterOnClickHandler; // ditto
+    public ItemsAdapterOnClickHandler mItemsAdapterOnClickHandler; // ditto
 
     /* Lists */
 
-    private List< BakedGood > mGoods; // ditto
+    private List< Item > mGoods; // ditto
 
     /* CONSTRUCTOR */
 
     // begin constructor
-    public GoodsAdapter( Context context, List< BakedGood > goods,
-                         GoodsAdapterOnClickHandler clickHandler ) {
+    public ItemsAdapter( Context context, List< Item > goods,
+                         ItemsAdapterOnClickHandler clickHandler ) {
 
         // 0. initialize the list
         // 1. initialize the click handler
@@ -53,7 +49,7 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
         // 1. initialize the click handler
 
-        mGoodsAdapterOnClickHandler = clickHandler;
+        mItemsAdapterOnClickHandler = clickHandler;
 
     } // end constructor
 
@@ -65,7 +61,7 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
     @Override
     // begin onCreateViewHolder
-    public GoodViewHolder onCreateViewHolder( ViewGroup parent, int viewType ) {
+    public ItemViewHolder onCreateViewHolder( ViewGroup parent, int viewType ) {
 
         // 0. inflate the correct layout using the parent view group's context
         // 1. return a view holder using the inflated view and this adapter
@@ -73,17 +69,17 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
         // 0. inflate the correct layout using the parent view group's context
 
         View view = LayoutInflater.from( parent.getContext() )
-                .inflate( R.layout.goods_item, parent, false );
+                .inflate( R.layout.item, parent, false );
 
         // 1. return a view holder using the inflated view and this adapter
 
-        return new GoodViewHolder( view, this );
+        return new ItemViewHolder( view, this );
 
     } // end onCreateViewHolder
 
     @Override
     // begin onBindViewHolder
-    public void onBindViewHolder( GoodViewHolder goodViewHolder, int position ) {
+    public void onBindViewHolder( ItemViewHolder itemViewHolder, int position ) {
 
         // 0. for the list item at this position, show the correct
         // 0a. picture
@@ -92,19 +88,19 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
         // 0. for the list item at this position, show the correct
 
-        BakedGood currentGood = mGoods.get( position );
+        Item currentGood = mGoods.get( position );
 
         // 0a. picture
 
-        goodViewHolder.mPictureImageView.setImageResource( currentGood.getPicture() );
+        itemViewHolder.mPictureImageView.setImageResource( currentGood.getPicture() );
 
         // 0b. name
 
-        goodViewHolder.mNameTextView.setText( currentGood.getName() );
+        itemViewHolder.mNameTextView.setText( currentGood.getName() );
 
         // 0c. value
 
-        goodViewHolder.mValueTextView.setText( String.valueOf( currentGood.getPrice() ) + " XOF" );
+        itemViewHolder.mValueTextView.setText( String.valueOf( currentGood.getPrice() ) + " XOF" );
 
     } // end onBindViewHolder
 
@@ -116,4 +112,4 @@ public class GoodsAdapter extends RecyclerView.Adapter< GoodViewHolder > {
 
     /* Other Methods */
 
-} // end class GoodsAdapter
+} // end class ItemsAdapter
